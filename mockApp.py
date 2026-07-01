@@ -160,7 +160,7 @@ def start():
     if not file :
         return jsonify({"error":"Resume PDF required"}),400
     # Save + parse resume
-    filename = f"{uuid.uuid4()[:8]}_{secure_filename(file.filename)}"
+    filename = f"{str(uuid.uuid4())[:8]}_{secure_filename(file.filename)}"
     filepath=f"./uploads/{filename}"
     file.save(filepath)
     resume_text=parse_resume(filepath)

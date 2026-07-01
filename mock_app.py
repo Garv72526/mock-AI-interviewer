@@ -1,13 +1,4 @@
-// ============================================================
-// MOCK INTERVIEWER — DAY 3
-// Flask API — 3 routes only
-//
-// Folder structure:
-// mock-api/
-//   app.py        ← this file
-//   .env          ← GROQ_API_KEY=your-key
-//   uploads/      ← resumes saved here
-// ============================================================
+
 
 import os
 import uuid
@@ -192,7 +183,7 @@ def start():
         return jsonify({"error": "Resume PDF required"}), 400
 
     # Save + parse resume
-    filename = f"{uuid.uuid4()[:8]}_{secure_filename(file.filename)}"
+    filename = f"{str(uuid.uuid4())[:8]}_{secure_filename(file.filename)}"
     filepath = f"./uploads/{filename}"
     file.save(filepath)
     resume_text = parse_resume(filepath)
